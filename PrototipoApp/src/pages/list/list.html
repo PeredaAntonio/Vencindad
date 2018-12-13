@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-searchbar placeholder="Buscar Socio" (ionInput)="getFiltradoSocios($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+        Socios
+      </ion-list-header>
+    <ion-item *ngFor="let socio of socios" (click)="goToDetail(socio.id, socio.ImgUrl)">
+      <ion-avatar item-start>
+          <img src="{{ socio.ImgUrl }}">
+      </ion-avatar>
+      <h2>{{ socio.Nombres +" "+ socio.ApellidoPaterno +" "+ socio.ApellidoMaterno }}</h2>
+      <h3>{{ socio.Email }}</h3>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab right bottom>
+      <button ion-fab color="secondary" block (click)="createSocio()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>
